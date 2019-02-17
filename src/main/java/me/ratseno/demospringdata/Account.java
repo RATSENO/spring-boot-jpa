@@ -1,6 +1,8 @@
 package me.ratseno.demospringdata;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -9,6 +11,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -24,6 +27,17 @@ public class Account {
 	private String username;
 
 	private String password;
+
+	@OneToMany(mappedBy="owner")
+	private Set<Study> studies = new HashSet<Study>();
+
+	public Set<Study> getStudies() {
+		return studies;
+	}
+
+	public void setStudies(Set<Study> studies) {
+		this.studies = studies;
+	}
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created = new Date();
