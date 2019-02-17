@@ -2,7 +2,10 @@ package me.ratseno.demospringdata;
 
 import java.util.Date;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,6 +32,10 @@ public class Account {
 
 	@Transient
 	private String no;
+
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "street", column = @Column(name = "home_street")) })
+	private Address address;
 
 	public Date getCreated() {
 		return created;
