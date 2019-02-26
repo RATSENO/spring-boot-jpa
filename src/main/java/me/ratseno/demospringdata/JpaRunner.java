@@ -12,16 +12,26 @@ public class JpaRunner implements ApplicationRunner {
 
 	@Autowired
 	PostRepository postRepository;
-	
+
 	@Autowired
 	Keesun keesun;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("=========================================");
-		System.out.println(keesun.getName());
+		Post post = new Post();
+		post.setTitle("spring");
+
+		Comment comment = new Comment();
+		comment.setComment("hello");
+
+		postRepository.save(post);
 	}
 
+	/*
+	 * @Override public void run(ApplicationArguments args) throws Exception {
+	 * System.out.println("=========================================");
+	 * System.out.println(keesun.getName()); }
+	 */
 	/*
 	 * @Override public void run(ApplicationArguments args) throws Exception {
 	 * TypedQuery<Post> query = entityManager.createQuery("SELECT p FROM Post AS p",
@@ -38,15 +48,13 @@ public class JpaRunner implements ApplicationRunner {
 	 * List<Post> posts = entityManager.createQuery(query).getResultList();
 	 * posts.forEach(System.out::println); }
 	 */
-	
-	
+
 	/*
 	 * @Override public void run(ApplicationArguments args) throws Exception {
 	 * List<Post> posts = entityManager.createNativeQuery("Select * from Post",
 	 * Post.class).getResultList(); posts.forEach(System.out::println); }
 	 */
-	
-	
+
 	/*
 	 * @Override public void run(ApplicationArguments args)throws Exception {
 	 * postRepository.findAll().forEach(System.out::println); }
