@@ -58,5 +58,11 @@ public class PostRepositoryTest {
 		assertThat(page.getNumber()).isEqualTo(0);
 		assertThat(page.getSize()).isEqualTo(10);
 		assertThat(page.getNumberOfElements()).isEqualTo(1);
+		
+		//when
+		long spring = postRepository.countByTitleContains("spring");
+		
+		//then
+		assertThat(spring).isEqualTo(1);
 	}
 }
