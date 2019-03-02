@@ -3,6 +3,7 @@ package me.ratseno.demospringdata;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,20 +20,7 @@ public class CommentRepositoryTest {
 
 	@Test
 	public void crud() {
-		// given
-		Comment comment = new Comment();
-		comment.setComment("Hello Comment");
-		commentRepository.save(comment);
-
-		// when
-		List<Comment> all = commentRepository.findAll();
-
-		// then
-		assertThat(all.size()).isEqualTo(1);
-
-		// when
-		long count = commentRepository.count();
-		assertThat(count).isEqualTo(1);
-
+		commentRepository.save(null);
+		
 	}
 }
